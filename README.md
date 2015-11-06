@@ -1,7 +1,7 @@
 # demo-ios-officemover
 demo-ios-officemover 是一个基于 Wilddog iOS SDK 开发的关于室内设计应用，您可以在线通过拖拽控件，就可以多终端实时布局你的室内设计。
 
-
+[](mover.png)
 
 ### 本地运行
 
