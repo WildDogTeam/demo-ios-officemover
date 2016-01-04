@@ -1,0 +1,5 @@
+language: objective-c
+
+script:
+- xctool -project OfficeMover5000.xcodeproj -scheme OfficeMover5000 -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
