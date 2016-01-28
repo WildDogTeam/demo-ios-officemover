@@ -488,7 +488,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = OfficeMover5000/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = OfficeMover5000;
@@ -513,7 +513,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = OfficeMover5000/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = OfficeMover5000;
