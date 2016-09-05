@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import Wilddog
+import WilddogAuth
+import WilddogSync
 
 class LoginViewController: UIViewController{
 
     let ref = Wilddog(url: OfficeMoverWilddogUrl)
-    var authData: WAuthData?
-    var authHandler: Int64!
+    let auth = WDGAuth.auth(appID: WilddogAppID)
+    var authHandler: WDGAuthStateDidChangeListenerHandle!
     
     @IBOutlet var btLogin: UIButton!
     
@@ -33,30 +34,30 @@ class LoginViewController: UIViewController{
         }
         
         // Handle cached Wilddog auth
-        autoLogin()
+//        autoLogin()
     }
     
-    // Automatically perform segue when Wilddog says authenticated
-    func autoLogin() {
-        // If we already have an auth observer, remove that one.
-        //TODO:
-        if authHandler != nil {
-            ref.removeAuthEventObserverWithHandle(authHandler)
-        }
-        // Automatically log in when we are auth'd
-        authHandler = ref.observeAuthEventWithBlock({
-            [unowned self] authData in
-            if authData != nil {
-                self.ref.removeAuthEventObserverWithHandle(self.authHandler)
-                self.performSegueWithIdentifier("LOGGED_IN", sender: self)
-            }
-        })
-    }
+//    // Automatically perform segue when Wilddog says authenticated
+//    func autoLogin() {
+//        // If we already have an auth observer, remove that one.
+//        if authHandler != nil {
+//            auth!.removeAuthStateDidChangeListener(authHandler)
+//        }
+//        // Automatically log in when we are auth'd
+//        authHandler = auth?.addAuthStateDidChangeListener({ (listenAuth, listenUser) in
+//            if listenUser != nil {
+//                if self.authHandler != nil{
+//                    self.auth?.removeAuthStateDidChangeListener(self.authHandler)
+//                    self.performSegueWithIdentifier("LOGGED_IN", sender: self)
+//                }
+//            }
+//        })
+//    }
     
     // Fire off log in with Anonymous.
     @IBAction func login(sender: AnyObject) {
         
-        [ref.authAnonymouslyWithCompletionBlock({ (error, authData) -> Void in
+        [auth!.signInAnonymouslyWithCompletion({ (user, error) -> Void in
             self.performSegueWithIdentifier("LOGGED_IN", sender: self)
         })]
         

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Wilddog
+import WilddogAuth
+import WilddogSync
 
 class RoomViewController: UIViewController, UIPopoverControllerDelegate, PopoverMenuDelegate {
     
@@ -35,15 +36,14 @@ class RoomViewController: UIViewController, UIPopoverControllerDelegate, Popover
         // Set logout button on right
         logoutButton.setTitleTextAttributes([NSFontAttributeName:ProximaNovaLight20], forState: UIControlState.Normal)
         
-        // Attach listener for logged out
-        let ref = Wilddog(url: OfficeMoverWilddogUrl)
-        ref.observeAuthEventWithBlock({ [unowned self]
-            authData in
-            if authData == nil {
-                // Not logged in, so let's explicitly transition to logout
-                self.logout()
-            }
-        })
+//        // Attach listener for logged out
+//        let auth = WDGAuth.auth(appID: WilddogAppID)
+//        auth?.addAuthStateDidChangeListener({ (auth, user) in
+//            if user == nil{
+//                 // Not logged in, so let's explicitly transition to logout
+//                 self.logout()
+//            }
+//        })
     }
     
     // Set delegate to handle menu actions and make sure only one popover is open
@@ -90,7 +90,8 @@ class RoomViewController: UIViewController, UIPopoverControllerDelegate, Popover
     func logout() {
         // Unauthenticate with Wilddog
         let ref = Wilddog(url: OfficeMoverWilddogUrl)
-        ref.unauth()
+        let auth = WDGAuth.auth(appID: WilddogAppID)
+        try! auth?.signOut()
         
         // Remove observers
         for loc in refLocations {

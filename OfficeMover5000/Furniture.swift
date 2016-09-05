@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Wilddog
+import WilddogSync
 
 var maxZIndex = 0
 

@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import Wilddog
+import WilddogSync
 
 //let OfficeMoverWilddogUrl = "https://<your-wilddog>.wilddogio.com"
 let OfficeMoverWilddogUrl = "https://myofficemover.wilddogio.com"
+let WilddogAppID = "myofficemover"
 
 class ViewController: RoomViewController {
     
