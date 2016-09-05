@@ -9,6 +9,7 @@ demo-ios-officemover 是一个基于 Wilddog iOS SDK 开发的关于室内设计
 ```
 git clone git@github.com:WildDogTeam/demo-ios-officemover.git
 cd  demo-ios-officemover
+pod install
 ```
 然后在iPad 或者 iPad模拟器上运行
 
