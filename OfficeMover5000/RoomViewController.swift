@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import WilddogAuth
-import WilddogSync
+import Wilddog
 
 class RoomViewController: UIViewController, UIPopoverControllerDelegate, PopoverMenuDelegate {
     
@@ -89,8 +88,8 @@ class RoomViewController: UIViewController, UIPopoverControllerDelegate, Popover
     
     func logout() {
         // Unauthenticate with Wilddog
-        let ref = Wilddog(url: OfficeMoverWilddogUrl)
-        let auth = WDGAuth.auth(appID: WilddogAppID)
+        let ref = WDGSync.sync().reference()
+        let auth = WDGAuth.auth()
         try! auth?.signOut()
         
         // Remove observers

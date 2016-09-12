@@ -51,7 +51,7 @@ class Furniture {
         self.left = defaultLoc.left
     }
     
-    convenience init(snap: WDataSnapshot) {
+    convenience init(snap: WDGDataSnapshot) {
         if let json = snap.value as? Dictionary<String, AnyObject> {
             self.init(key: snap.key, json: json)
         }

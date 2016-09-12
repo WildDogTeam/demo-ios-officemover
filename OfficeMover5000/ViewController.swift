@@ -15,12 +15,16 @@ let WilddogAppID = "myofficemover"
 
 class ViewController: RoomViewController {
     
-    let ref = Wilddog(url: OfficeMoverWilddogUrl)
-    let furnitureRef = Wilddog(url: "\(OfficeMoverWilddogUrl)/furniture")
-    let backgroundRef = Wilddog(url: "\(OfficeMoverWilddogUrl)/background")
-    
+    var ref : WDGSyncReference!
+    var furnitureRef : WDGSyncReference!
+    var backgroundRef : WDGSyncReference!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = WDGSync.sync().reference()
+        furnitureRef = ref.child("furniture")
+        backgroundRef = ref.child("background")
         
         // Load the furniture items from Wilddog
         furnitureRef.observeEventType(.ChildAdded, withBlock: { [unowned self] snapshot in

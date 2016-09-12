@@ -7,19 +7,22 @@
 //
 
 import UIKit
-import WilddogAuth
-import WilddogSync
+import Wilddog
 
 class LoginViewController: UIViewController{
 
-    let ref = Wilddog(url: OfficeMoverWilddogUrl)
-    let auth = WDGAuth.auth(appID: WilddogAppID)
+    var ref : WDGSyncReference!
+    var auth : WDGAuth!
     var authHandler: WDGAuthStateDidChangeListenerHandle!
     
     @IBOutlet var btLogin: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //获取一个指向根节点的 WDGSyncReference 实例
+        ref = WDGSync.sync().reference()
+        auth = WDGAuth.auth()
         
         // Set the nav bar appearance
         navigationItem.setHidesBackButton(true, animated: false)
